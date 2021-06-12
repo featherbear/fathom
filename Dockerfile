@@ -5,7 +5,7 @@ COPY gulpfile.js ./
 COPY assets/ ./assets/
 RUN npm install && NODE_ENV=production ./node_modules/gulp/bin/gulp.js
 
-FROM golang:latest AS binarybuilder
+FROM golang:1.12 AS binarybuilder
 RUN go get -u github.com/gobuffalo/packr/packr
 WORKDIR /go/src/github.com/usefathom/fathom
 COPY . /go/src/github.com/usefathom/fathom
